@@ -1,3 +1,7 @@
+body {
+    background-color: rgb(231, 228, 228);
+    margin: 0;
+}
 
 /* navbar */
 .navbar {
@@ -31,6 +35,13 @@
     margin-bottom: 100px;
 }
 
+.portfolio {
+    margin-bottom: 100px;
+}
+
+.testmonial {
+    margin-bottom: 100px;
+}
 .testimonials {
     background: url("/static/img/testimonials.jpg") 50% 0 no-repeat fixed;
     color: white;
@@ -44,7 +55,13 @@
     background: url("/static/img/contact5.jpg") 50% 0 no-repeat fixed;
     color: white;
     text-align: center;
-    height: 800px;
+    height: 900px;
     padding: 100px 0 0 0;   
     opacity: 1;
 }
+
+.add-space {
+    height: 100px;
+}
+
+
