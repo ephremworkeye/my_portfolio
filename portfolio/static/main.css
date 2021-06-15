@@ -1,0 +1,50 @@
+
+/* navbar */
+.navbar {
+    opacity: 0.7;
+}
+/* banner */
+.banner{
+    background: url("/static/img/search.jpg") 50% 0 no-repeat fixed;
+    color: white;
+    text-align: center;
+    height: 800px;
+    padding: 100px 0 0 0;  
+    margin-bottom: 100px; 
+    opacity: 1;
+}
+
+.about {
+    margin-bottom: 100px;
+}
+
+.number {
+    margin-top: 100px;
+}
+.section-number{
+    background: url("/static/img/number.jpg") 50% 0 no-repeat fixed;
+    color: white;
+    text-align: center;
+    height: 500px;
+    padding: 100px 0 0 0;   
+    opacity: 0.9;
+    margin-bottom: 100px;
+}
+
+.testimonials {
+    background: url("/static/img/testimonials.jpg") 50% 0 no-repeat fixed;
+    color: white;
+    text-align: center;
+    height: 400px;
+    padding: 100px 0 0 0;   
+    opacity: 0.9;
+}
+
+.contact-section {
+    background: url("/static/img/contact5.jpg") 50% 0 no-repeat fixed;
+    color: white;
+    text-align: center;
+    height: 800px;
+    padding: 100px 0 0 0;   
+    opacity: 1;
+}
