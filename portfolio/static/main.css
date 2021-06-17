@@ -51,11 +51,11 @@ body {
     opacity: 0.9;
 }
 
-.contact-section {
-    background: url("/static/img/contact5.jpg") 50% 0 no-repeat fixed;
+#contact-section {
+    background: url("/static/img/blue.jpg") 50% 0 no-repeat fixed;
     color: white;
     text-align: center;
-    height: 900px;
+    height: 100%;
     padding: 100px 0 0 0;   
     opacity: 1;
 }
@@ -64,4 +64,14 @@ body {
     height: 100px;
 }
 
+
+#detail-img{
+    background: url("/static/img/blue.jpg") 50% 0 no-repeat fixed;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    padding: 100px 0 0 0;  
+    opacity: 1;
+    bottom: 0;
+}
 

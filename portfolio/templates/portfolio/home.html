@@ -34,72 +34,31 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-7">
-                                <div class="about-info">
-                                    <p><span class="title-s">Name: </span> <span>Morgan Freeman</span></p>
-                                    <p><span class="title-s">Profile: </span> <span>full stack developer</span></p>
-                                    <p><span class="title-s">Email: </span> <span>contact@example.com</span></p>
-                                    <p><span class="title-s">Phone: </span> <span>(617) 557-0089</span></p>
+                                <div class="fw-bolder fs-5">
+                                    <p><span>Name: </span> <span>{{ profile.first_name }} {{ profile.last_name }}</span>
+                                    </p>
+                                    <p><span>Profile: </span> <span>{{ profile.profession }}</span></p>
+                                    <p><span>Email: </span> <span>{{ profile.email }}</span></p>
+                                    <p><span>Phone: </span> <span>{{ profile.phone }}</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="skill pt-3">
-                            <h3 class="my-3">Skill</h3>
+                            <h3 class="my-3">SKILL</h3>
+                            {% for skill in skills %}
                             <div class="mb-2">
-                                <span>PYTHON</span>
-                                <div class="progress">
+                                <span class="fw-bolder">{{ skill.name|upper }}</span>
+                                <div class="progress my-2">
                                     <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0"
-                                        aria-valuemax="100">80%</div>
+                                        role="progressbar" style="width: {{ skill.rate }}%;"
+                                        aria-valuenow="{{skill.rate}}" aria-valuemin="0" aria-valuemax="100">
+                                        {{ skill.rate }}%
+                                    </div>
                                 </div>
                             </div>
-                            <div class="mb-2">
-                                <span>DJANGO</span>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0"
-                                        aria-valuemax="100">85%</div>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <span>JAVASCRIPT</span>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0"
-                                        aria-valuemax="100">75%</div>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <span>HTML</span>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0"
-                                        aria-valuemax="100">70%</div>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <span>CSS</span>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
-                                        aria-valuemax="100">50%</div>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <span>BOOTSRAP</span>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0"
-                                        aria-valuemax="100">65%</div>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <span>REACT</span>
-                                <div class="progress">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                        role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0"
-                                        aria-valuemax="100">25%</div>
-                                </div>
-                            </div>
+                            {% empty %}
+                            <p>No skills listed</p>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-md-6 p-3">
@@ -143,7 +102,7 @@
 
 <div class="container number">
     <h1 class="display-3 fw-bolder mb-4 text-center">
-        NUMBER
+        EXPERIENCE
     </h1>
 </div>
 <div class="container-fluid section-number">
@@ -151,7 +110,7 @@
         <div class="row">
             <div class="col-sm-6 col-lg-6 fw-bolder">
                 {% bs_icon 'check-circle' size='6em' %}
-                <p class="py-3 fs-4">7</p>
+                <p class="py-3 fs-4">{{ portfolios|length }}</p>
                 <p class="lead fs-4 fw-bolder">
                     WORKS COMPLETED
                 </p>
@@ -159,7 +118,7 @@
             </div>
             <div class="col-sm-3 col-lg-3">
                 {% bs_icon 'reception-4' size='6em' %}
-                <p class="py-3 fs-4">4</p>
+                <p class="py-3 fs-4">{{ profile.experience }}</p>
                 <p class="lead fs-4 fw-bolder">
                     YEARS OF EXPERIENCE
                 </p>
@@ -178,46 +137,33 @@
 </div>
 <div class="container portfolio">
     <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for project in portfolios %}
         <div class="col">
             <div class="card">
-                <img src="{% static 'img/Javascript.jpg' %}" class="card-img-top" alt="...">
+                <a href="{{ project.get_absolute_url }}"><img src="{{ project.image.url }}" class="card-img-top"
+                        alt="..."></a>
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
+
+                    <a class="nav-link p-0 my-3" href="{{ project.get_absolute_url }}">
+                        <h5 class="card-title fw-bolder w-100 bg-light text-primary text-center py-2 rounded-pill">
+                            {{ project.name|upper }}</h5>
+                    </a>
+
+                    <div class="px-5 text-center">
+                        <a href="{{ project.website_link }}"
+                            class="nav-link d-inline-block">{% bs_icon 'globe' size='2em' %}</a>
+                        <a href="{{ project.github_link }}"
+                            class="nav-link d-inline-block">{% bs_icon 'github' size='2em' %}</a>
+                        <a class="nav-link d-inline-block" href="{{ project.get_absolute_url }}">
+                            <div class="text-end">{% bs_icon 'plus-circle-fill' size='2em' %}</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
-                <img src="{% static 'img/Javascript.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img src="{% static 'img/Javascript.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img src="{% static 'img/Javascript.jpg' %}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
+        {% empty %}
+        <h1>No portfolio available</h1>
+        {% endfor %}
     </div>
 </div>
 <!-- End Portfolio Section -->
@@ -274,95 +220,96 @@
 <!-- End Testimonials Section -->
 
 <!-- ======= Contact Section ======= -->
-<div class="container">
-    <h1 class="display-3 fw-bolder mb-4 text-center">
-        CONTACT ME
-    </h1>
-</div>
-
-
+<div class="container-fluid" id="contact-section">
+    <div class="container">
+        <h1 class="display-3 fw-bolder mb-4 text-center">
+            CONTACT ME
+        </h1>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                        <form action="" method="post">
-                            <div class="row">
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Your Name" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Your Email" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="subject" id="subject"
-                                            placeholder="Subject" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control" name="message" rows="5" placeholder="Message"
-                                            required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <button type="submit" class="btn btn-primary btn-lg m-3 px-4 py-2 fw-bolder">Send
-                                        Message</button>
-                                </div>
+                <form action="" method="post">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                    required>
                             </div>
-                        </form>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="subject" id="subject"
+                                    placeholder="Subject" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg m-3 px-4 py-2 fw-bolder">Send
+                                Message</button>
+                        </div>
                     </div>
-               
-                <div class="col-sm-12 col-md-6">
-                    <div class="pt-4 pt-md-0">
-                        <h5 class="">
-                            Get in Touch
-                        </h5>
+                </form>
+            </div>
+
+            <div class="col-sm-12 col-md-6">
+                <div class="pt-4 pt-md-0">
+                    <h5 class="">
+                        Get in Touch
+                    </h5>
+                </div>
+                <div class="more-info">
+                    <p class="lead">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum
+                        dolorem soluta quidem
+                        expedita aperiam aliquid at.
+                        Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione nobis
+                        mollitia inventore?
+                    </p>
+                    <div class="mb-2 text-primary">
+                        <div class="d-inline pr-4">{% bs_icon 'geo' size='2em' %}</div>
+                        <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
                     </div>
-                    <div class="more-info">
-                        <p class="lead">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum
-                            dolorem soluta quidem
-                            expedita aperiam aliquid at.
-                            Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione nobis
-                            mollitia inventore?
-                        </p>
-                        <div class="mb-2 text-primary">
-                            <div class="d-inline pr-4">{% bs_icon 'geo' size='2em' %}</div>
-                            <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
-                        </div>
-                        <div class="mb-2 text-primary">
-                            <div class="d-inline pr-4">{% bs_icon 'phone' size='2em' %}</div>
-                            <div class="d-inline p-2">(111) 111-1111</div>
-                        </div>
-                        <div class="mb-2 text-primary">
-                            <div class="d-inline pr-4">{% bs_icon 'envelope' size='2em' %}</div>
-                            <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
-                        </div>
-                        
-                        
+                    <div class="mb-2 text-primary">
+                        <div class="d-inline pr-4">{% bs_icon 'phone' size='2em' %}</div>
+                        <div class="d-inline p-2">(111) 111-1111</div>
+                    </div>
+                    <div class="mb-2 text-primary">
+                        <div class="d-inline pr-4">{% bs_icon 'envelope' size='2em' %}</div>
+                        <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
                     </div>
 
-                    <div class="socials">
-                        <ul class="list-inline">
-                            <li class="list-inline-item px-3"><a class="nav-link"
-                                    href="">{% bs_icon 'facebook' size='2em' %}</a></li>
-                            <li class="list-inline-item px-3"><a class="nav-link"
-                                    href="">{% bs_icon 'github' size='2em' %}</a></li>
-                            <li class="list-inline-item px-3"><a class="nav-link"
-                                    href="">{% bs_icon 'linkedin' size='2em' %}</a></li>
-                        </ul>
-                    </div>
+
                 </div>
-            
+
+                <div class="socials">
+                    <ul class="list-inline">
+                        <li class="list-inline-item px-3"><a class="nav-link"
+                                href="">{% bs_icon 'facebook' size='2em' %}</a></li>
+                        <li class="list-inline-item px-3"><a class="nav-link"
+                                href="">{% bs_icon 'github' size='2em' %}</a>
+                        </li>
+                        <li class="list-inline-item px-3"><a class="nav-link"
+                                href="">{% bs_icon 'linkedin' size='2em' %}</a></li>
+                    </ul>
+                </div>
+            </div>
+
 
         </div>
     </div>
+</div>
 <!-- End Contact Section -->
 
 {% endblock %}
