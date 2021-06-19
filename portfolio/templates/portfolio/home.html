@@ -9,7 +9,7 @@
     <div class="container my-5 py-5">
         <h1 class="display-1 fw-bolder pt-5 py-2">I am Ephrem Wube</h1>
         <h5 class="display-6 fw-bolder py-2">Full stack developer</h5>
-        <button type="button" class="btn btn-primary btn-lg m-2 px-5 py-2 fw-bolder">Contact</button>
+        <a href="{% url 'portfolio:contact' %}"><button type="button" class="btn btn-primary btn-lg m-2 px-5 py-2 fw-bolder">Contact</button></a>
         <button type="button" class="btn btn-danger btn-lg m-2 px-3 py-2 fw-bolder">Upload Resume</button>
     </div>
 </div>
@@ -226,39 +226,23 @@
             CONTACT ME
         </h1>
     </div>
+   
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6">
-                <form action="" method="post">
+                <form action="{% url 'portfolio:contact' %}" method="post" class="text-light fw-bolder fs-6 text-uppercase">
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                                    required>
+                            <div class="form-group text-start">
+                                {{ form.as_p }}
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg m-3 px-4 py-2 fw-bolder">Send
+                                        Message</button>
+                                </div>
+                                {% csrf_token %}
                             </div>
                         </div>
-                        <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" id="email"
-                                    placeholder="Your Email" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="subject" id="subject"
-                                    placeholder="Subject" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" rows="5" placeholder="Message"
-                                    required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary btn-lg m-3 px-4 py-2 fw-bolder">Send
-                                Message</button>
-                        </div>
+
                     </div>
                 </form>
             </div>
@@ -270,46 +254,44 @@
                     </h5>
                 </div>
                 <div class="more-info">
-                    <p class="lead">
+                    <p class="lead text-start">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum
                         dolorem soluta quidem
                         expedita aperiam aliquid at.
                         Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione nobis
                         mollitia inventore?
                     </p>
-                    <div class="mb-2 text-primary">
-                        <div class="d-inline pr-4">{% bs_icon 'geo' size='2em' %}</div>
-                        <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
-                    </div>
-                    <div class="mb-2 text-primary">
-                        <div class="d-inline pr-4">{% bs_icon 'phone' size='2em' %}</div>
-                        <div class="d-inline p-2">(111) 111-1111</div>
-                    </div>
-                    <div class="mb-2 text-primary">
-                        <div class="d-inline pr-4">{% bs_icon 'envelope' size='2em' %}</div>
-                        <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
-                    </div>
+                    <div class="container col-sm-11 col-md-11 col-lg-10 p-3"></div>
+                        <div class="mb-2 text-light text-start">
+                            <div class="d-inline pr-5">{% bs_icon 'geo' size='2em' %}</div>
+                            <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
+                        </div>
+                        <div class="mb-2 text-light text-start">
+                            <div class="d-inline pr-5">{% bs_icon 'phone' size='2em' %}</div>
+                            <div class="d-inline p-2">(111) 111-1111</div>
+                        </div>
+                        <div class="mb-2 text-light text-start">
+                            <div class="d-inline pr-5">{% bs_icon 'envelope' size='2rem' %}</div>
+                            <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
+                        </div>
 
-
-                </div>
-
-                <div class="socials">
-                    <ul class="list-inline">
-                        <li class="list-inline-item px-3"><a class="nav-link"
-                                href="">{% bs_icon 'facebook' size='2em' %}</a></li>
-                        <li class="list-inline-item px-3"><a class="nav-link"
-                                href="">{% bs_icon 'github' size='2em' %}</a>
-                        </li>
-                        <li class="list-inline-item px-3"><a class="nav-link"
-                                href="">{% bs_icon 'linkedin' size='2em' %}</a></li>
-                    </ul>
+                        <div class="socials text-start">
+                            <ul class="list-inline">
+                                <li class="list-inline-item px-3"><a class="nav-link"
+                                        href="">{% bs_icon 'facebook' size='3rem' %}</a></li>
+                                <li class="list-inline-item px-3"><a class="nav-link"
+                                        href="">{% bs_icon 'github' size='3em' %}</a>
+                                </li>
+                                <li class="list-inline-item px-3"><a class="nav-link"
+                                        href="">{% bs_icon 'linkedin' size='3rem' %}</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
         </div>
-    </div>
 </div>
+
 <!-- End Contact Section -->
 
 {% endblock %}

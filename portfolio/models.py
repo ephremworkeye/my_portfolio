@@ -87,3 +87,9 @@ class Testimonial(models.Model):
     def __str__(self):
         return self.first_name
     
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    subject = models.CharField(max_length=250)
+    message = models.TextField()
