@@ -12,4 +12,5 @@ urlpatterns = [
     path('privacy', views.privacy, name='privacy'),
     path('cookies', views.cookies, name='cookies'),
     path('features', views.features, name='features'),
+    path('search', views.portfolio_search, name='search'),
 ]

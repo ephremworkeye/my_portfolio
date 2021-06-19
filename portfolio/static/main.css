@@ -1,11 +1,12 @@
 body {
-    background-color: rgb(231, 228, 228);
+    background-color: rgb(240, 229, 229);
     margin: 0;
 }
 
 /* navbar */
 .navbar {
-    opacity: 0.7;
+    opacity: 0.90;
+    background-color: #151515;
 }
 /* banner */
 .banner{
@@ -61,7 +62,7 @@ body {
 }
 
 .add-space {
-    height: 80px;
+    height: 88px;
 }
 
 
@@ -73,5 +74,10 @@ body {
     padding: 100px 0 0 0;  
     opacity: 1;
     bottom: 0;
+}
+
+footer {
+    background-color: #151515;
+    opacity: 0.9;
 }
 

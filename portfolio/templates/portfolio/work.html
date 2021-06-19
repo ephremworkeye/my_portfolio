@@ -12,6 +12,7 @@
 
 </div>
 <!-- ======= Portfolio Section ======= -->
+<!-- ======= Portfolio Section ======= -->
 <div class="container">
     <h1 class="display-3 fw-bolder mb-4 text-center">
         PORTFOLIO
@@ -22,11 +23,24 @@
         {% for project in portfolios %}
         <div class="col">
             <div class="card">
-                <a href="{{ project.get_absolute_url }}"><img src="{{ project.image.url }}" class="card-img-top" alt="..."></a>
+                <a href="{{ project.get_absolute_url }}"><img src="{{ project.image.url }}" class="card-img-top"
+                        alt="..."></a>
                 <div class="card-body">
-                    <a href="{{ project.get_absolute_url }}"><h5 class="card-title">{{ project.name }}</h5></a>
-                    <p class="card-text">{{ project.description }}.</p>
-                    <a href="{{ project.get_absolute_url }}"><div class="text-end text-primary">{% bs_icon 'plus-circle-fill' size='2em' %}</div></a>
+
+                    <a class="nav-link p-0 my-3" href="{{ project.get_absolute_url }}">
+                        <h5 class="card-title fw-bolder w-100 bg-light text-primary text-center py-2 rounded-pill">
+                            {{ project.name|upper }}</h5>
+                    </a>
+
+                    <div class="px-5 text-center">
+                        <a href="{{ project.website_link }}"
+                            class="nav-link d-inline-block">{% bs_icon 'globe' size='2em' %}</a>
+                        <a href="{{ project.github_link }}"
+                            class="nav-link d-inline-block">{% bs_icon 'github' size='2em' %}</a>
+                        <a class="nav-link d-inline-block" href="{{ project.get_absolute_url }}">
+                            <div class="text-end">{% bs_icon 'plus-circle-fill' size='2em' %}</div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -57,23 +57,23 @@
                     <div class="container col-sm-11 col-md-11 col-lg-10 p-3"></div>
                         <div class="mb-2 text-light text-start">
                             <div class="d-inline pr-5">{% bs_icon 'geo' size='2em' %}</div>
-                            <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
+                            <div class="d-inline p-2 fs-5">{{ profile.address }}</div>
                         </div>
-                        <div class="mb-2 text-light text-start">
+                        <div class="mb-2 text-light text-start =">
                             <div class="d-inline pr-5">{% bs_icon 'phone' size='2em' %}</div>
-                            <div class="d-inline p-2">(111) 111-1111</div>
+                            <div class="d-inline p-2 fs-5">{{ profile.phone }}</div>
                         </div>
                         <div class="mb-2 text-light text-start">
                             <div class="d-inline pr-5">{% bs_icon 'envelope' size='2rem' %}</div>
-                            <div class="d-inline p-2">329 WASHINGTON ST BOSTON, MA 02108</div>
+                            <div class="d-inline p-2 fs-5">{{ profile.website }}</div>
                         </div>
 
                         <div class="socials text-start">
                             <ul class="list-inline">
                                 <li class="list-inline-item px-3"><a class="nav-link"
-                                        href="">{% bs_icon 'facebook' size='3rem' %}</a></li>
+                                        href="{{ profile.website }}">{% bs_icon 'envelope' size='3rem' %}</a></li>
                                 <li class="list-inline-item px-3"><a class="nav-link"
-                                        href="">{% bs_icon 'github' size='3em' %}</a>
+                                        href="{{ profile.github }}">{% bs_icon 'github' size='3em' %}</a>
                                 </li>
                                 <li class="list-inline-item px-3"><a class="nav-link"
                                         href="">{% bs_icon 'linkedin' size='3rem' %}</a></li>

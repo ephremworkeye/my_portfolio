@@ -18,9 +18,9 @@
   <body>
     <!-- ======= Header ======= -->
   <div class="container-fluid p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fs-4 fixed-top" style="opacity: 0.9;">
+    <nav class="navbar navbar-expand-lg navbar-dark fs-4 fixed-top"">
         <div class="container-fluid p-2">
-          <a class="navbar-brand fs-3" href="">MYPORT<img src="" alt="" style="width: 100px;"></a>
+          <a class="navbar-brand fs-3" href="{% url 'portfolio:home' %}"><img src="{% static 'img/logo3.png' %}" alt="" style="width: 80px;"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -39,8 +39,9 @@
                 <a class="nav-link" href="{% url 'portfolio:contact' %}">CONTACT</a>
               </li>
             </ul>
-            <form class="d-flex">
-              <input class="form-control me-2 fs-3" type="search" placeholder="SEARCH" aria-label="Search">
+            <form action="{% url 'portfolio:search' %}" method="post" class="d-flex">
+              {% csrf_token %}
+              <input class="form-control me-2 fs-3" type="search" name="searched" placeholder="SEARCH PORTFOLIO" aria-label="Search">
               <button class="btn btn-outline-primary fs-3 text-light" type="submit">SEARCH</button>
             </form>
           </div>
@@ -54,11 +55,11 @@
 
   <!-- ======= Footer ======= -->
   <footer>
-    <div class="container-fluid bg-dark text-light">
+    <div class="container-fluid text-light">
         <div class="row text-center p-5">
             <div class="col p-5">
-                <p> <a href="" class="nav-link footer-link text-white">About Me</a> </p>
-                <p> <a href="{% url 'portfolio:contact' %}" class="nav-link footer-link text-white">Contact Us</a> </p>
+                <p> <a href="{% url 'portfolio:about' %}" class="nav-link footer-link text-white">About Me</a> </p>
+                <p> <a href="{% url 'portfolio:contact' %}" class="nav-link footer-link text-white">Contact Me</a> </p>
 
             </div>
             <div class="col p-5">
@@ -68,7 +69,7 @@
             </div>
             <div class="col p-5">
                 <p> <a href="{% url 'portfolio:cookies' %}" class="nav-link footer-link text-white">Cookie Settings</a> </p>
-                <p> <a href="{% url 'portfolio:home' %}" class="nav-link footer-link text-white">Feautured Projects</a></p>
+                <p> <a href="{% url 'portfolio:work' %}" class="nav-link footer-link text-white">Feautured Projects</a></p>
             </div>
         </div>
     </div>
