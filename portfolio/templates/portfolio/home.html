@@ -3,15 +3,15 @@
 {% load bootstrap_icons %}
 
 {% block title %}{% endblock %}
-<!-- ======= adveritsing Section ======= -->
+<!-- ======= banner Section ======= -->
 {% block content %}
 <div id="banner" class="banner">
-    <div class="container my-5 py-5">
+    <div class="container my-5 py-5" id="banner-header">
         <h1 class="display-1 fw-bolder pt-5 py-2">I am Ephrem Wube</h1>
         <h5 class="display-6 fw-bolder py-2">Full stack developer</h5>
         <a href="{% url 'portfolio:contact' %}"><button type="button"
                 class="btn btn-primary btn-lg m-2 px-5 py-2 fw-bolder">Contact</button></a>
-        <button type="button" class="btn btn-danger btn-lg m-2 px-3 py-2 fw-bolder">Upload Resume</button>
+        <a href="" download=""><button type="button" class="btn btn-outline-danger btn-lg m-2 px-3 py-2 fw-bolder">Upload Resume</button></a>
     </div>
 </div>
 <!-- End adveritsing section -->
@@ -184,7 +184,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active" data-bs-interval="10000" style="background-color:rgb(38, 107, 218); height:30rem; position:relative">
             <div class="carousel-caption d-md-block text-white" style="position: absolute; top: 100px;">
-                <img src="{{ testimonial1.image.url }}" class="w-20" alt="..." style="width: 16rem;">
+                <img src="{{ testimonial1.image.url }}" class="w-20" alt="..." style="width: 16rem; border-radius:50%">
                 <h5>{{ testimonial1.first_name }}</h5>
                 <p>{{ testimonial1.body }}</p>
             </div>
@@ -192,7 +192,7 @@
         <div class="carousel-item" data-bs-interval="2000" style="background-color:rgb(38, 107, 218); height:30rem ">
          
             <div class="carousel-caption d-md-block text-white" style="position: absolute; top: 100px;">
-                <img src="{{ testimonial2.image.url }}" class="w-20" alt="..." style="width: 16rem;">
+                <img src="{{ testimonial2.image.url }}" class="w-20" alt="..." style="width: 16rem; border-radius:50%">
                 <h5>{{ testimonial2.first_name }}</h5>
                 <p>{{ testimonial2.body }}</p>
             </div>

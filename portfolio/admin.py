@@ -9,7 +9,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ('name', 'slug', 'image')
+    list_display = ('name', 'slug')
     prepopulated_fields = {'slug': ('name',)}
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):

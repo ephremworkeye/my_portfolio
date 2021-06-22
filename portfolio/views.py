@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Portfolio, Profile, Skill, Testimonial
 from .forms import ContactForm
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 
 # Create your views here.
 def home(request):
@@ -77,4 +77,11 @@ def portfolio_search(request):
         return render(request, 'portfolio/search.html', {'searched': searched, 'results': results})
     return render(request, 'portfolio/search.html')
 
-
+def download_resume(request, path):
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type='resume')
+            response['Content-Disposition']='inline;filename='+os.path.basename(file_path)
+            return response
+    raise Http404

@@ -13,4 +13,5 @@ urlpatterns = [
     path('cookies', views.cookies, name='cookies'),
     path('features', views.features, name='features'),
     path('search', views.portfolio_search, name='search'),
+    path('download', views.download_resume, 'download'),
 ]

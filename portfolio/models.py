@@ -19,6 +19,7 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='portfolio/%Y/%m/%d',blank=True)
     website = models.URLField(max_length=250)
     github = models.URLField(max_length=250, null=True)
+    resume = models.FileField(upload_to='resume', null=True, blank=True)
     profession = models.CharField(max_length=100, null=True)
     education = models.CharField(max_length=100)
     experience = models.PositiveIntegerField(null=True)
@@ -82,7 +83,7 @@ class Testimonial(models.Model):
     body = models.TextField(null=True, blank=True)
     phone = models.CharField(max_length=20, blank=True)
     profession = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='portfolio/%Y/%m/%d', blank=True)
+    image = models.ImageField(upload_to='testimonial/%Y/%m/%d', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
