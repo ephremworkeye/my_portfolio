@@ -9,17 +9,18 @@ def home(request):
     form = ContactForm()
     portfolios = Portfolio.objects.filter(is_published=True)
     skills = Skill.objects.all().order_by('-rate')
-    testimonial1 = Testimonial.objects.get(id=1)
-    testimonial2 = Testimonial.objects.get(id=2)
-    profile = Profile.objects.get(user_id=1)
+    # testimonial1 = Testimonial.objects.get(id=1)
+    # testimonial2 = Testimonial.objects.get(id=2)
+    # profile = Profile.objects.get(user_id=1)
     
     return render(request, 'portfolio/home.html', {
         'portfolios':portfolios,
         'skills': skills,
-        'profile': profile,
+        # 'profile': profile,
         'form': form,
-        'testimonial1':testimonial1,
-        'testimonial2':testimonial2 })
+        # 'testimonial1':testimonial1,
+        # 'testimonial2':testimonial2 
+        })
 
 def detail(request, id, slug):
     portfolio = get_object_or_404(Portfolio, id=id, slug=slug)
